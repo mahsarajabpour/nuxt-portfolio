@@ -12,11 +12,14 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    ],
+    // script:['~node_modules/jquery/dist/jquery.js']
+    script:['bootstrap/dist/js/bootstrap.js']
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    'bootstrap/dist/css/bootstrap.css',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -32,9 +35,29 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+
+    [
+      'nuxt-fontawesome', {
+        component: 'fa',
+      imports: [
+        {
+          set: '@fortawesome/free-solid-svg-icons',
+          icons: ['fas']
+        },
+        {
+          set:'@fortawesome/free-brands-svg-icons',
+          icons: ['fab']
+        }
+      ]
+    }
+    ]
+
+
+
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    // vendor:['jquery','bootstrap','popper.js']
   }
 }

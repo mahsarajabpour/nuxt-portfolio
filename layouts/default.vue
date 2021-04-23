@@ -1,62 +1,294 @@
 <template>
   <div>
-    <Nuxt />
+    <Navbar/>
+    <div class="main">
+      <Nuxt/>
+    </div>
+    <Footer/>
   </div>
 </template>
 
+<script>
+import Navbar from "@/components/Navbar/Navbar";
+import Footer from "@/components/Footer/Footer";
+
+export default {
+  components: {
+    Navbar, Footer
+  }
+}
+</script>
 <style>
-html {
-  font-family:
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
+/*html {*/
+/*  font-family: 'Source Sans Pro',*/
+/*  -apple-system,*/
+/*  BlinkMacSystemFont,*/
+/*  'Segoe UI',*/
+/*  Roboto,*/
+/*  'Helvetica Neue',*/
+/*  Arial,*/
+/*  sans-serif;*/
+/*  font-size: 16px;*/
+/*  word-spacing: 1px;*/
+/*  -ms-text-size-adjust: 100%;*/
+/*  -webkit-text-size-adjust: 100%;*/
+/*  -moz-osx-font-smoothing: grayscale;*/
+/*  -webkit-font-smoothing: antialiased;*/
+/*  box-sizing: border-box;*/
+/*}*/
+
+/**,*/
+/**::before,*/
+/**::after {*/
+/*  box-sizing: border-box;*/
+/*  margin: 0;*/
+/*}*/
+
+.main{
+  margin: 94px 0;
+}
+.main-form {
+  margin: 80px 0;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 12px 27px 0 #c7c4c4;
+}
+.entry {
+  margin-bottom: 50px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
+.center {
+  display: flex;
+  justify-content: center;
 }
 
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
+.welcome-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 80px 0;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 12px 27px 0 #c7c4c4;
+  background-color: #f2f7f6;
+  line-height: 3;
+  padding: .5rem;
+}
+.errorMessage {
+  color: red;
+  font-size: .8rem;
+}
+
+.error {
+  border: 1px solid red;
+  border-radius: 5px;
+}
+
+.entry {
+  margin-bottom: 50px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+.wrapper {
+  min-height: 100%;
+}
+
+
+.App {
+  text-align: center;
+}
+
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+
+/*/////////////////////*//*title*/
+
+.title {
+  background-color: #f8f9fa;
+  margin: 78px 0 140px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.title p {
+  padding-left: 15px;
+  margin-bottom: 0;
+  margin-left: 69.500px;
+  line-height: 3;
+  font-size: 28px;
+  text-transform: uppercase;
+  font-family: "Poppins", sans-serif;
+  color: #556270;
+}
+
+.title pre {
+  line-height: 2.5;
+  padding: 20px 15px 0 0;
+  margin-right: 69.500px;
+  font-family: "Poppins", sans-serif;
+  color: #444444;
+  font-weight: 200;
+}
+
+.title pre a {
+  color: #2abe8b
+}
+
+.title pre a:hover {
   text-decoration: none;
-  padding: 10px 30px;
 }
 
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
+/*///*/
+
+
+.my-btn {
+  background-color: #2abe8b;
+  color: white;
+  border-radius: 6px;
+  line-height: 2;
+  border: none;
+  padding: 6px 10px;
 }
 
-.button--grey {
+.my-btn:hover {
+  color: white;
+  opacity: 80%;
+}
+
+.my-btn:focus {
+  outline: none;
+}
+
+/*////*/
+/*pagination*/
+.m-pagination {
+  margin-bottom: 3%;
+  width: 60rem;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.5vw;
+  align-items: center;
+}
+
+.m-pagination .col {
+  text-align: center;
+}
+
+.m-pagination .prev,
+.m-pagination .next {
+  width: 40px;
+}
+
+.m-pagination .prev a,
+.m-pagination .next a {
   display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
+  color: #333232a1;
   text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
+  width: 100%;
+  text-align: center;
+  border-radius: 5px;
+  background-color: #eeeeee;
+  transition: 0.3s;
+  border: 1px solid #d0d4d3;
+
 }
 
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+.m-pagination .next-page-btn:hover,
+.m-pagination .prev-page-btn:hover {
+  background-color: #d2cece;
 }
+
+.m-pagination .center-page a {
+  background-color: #eeeeee;
+  height: auto;
+  width: 2.5rem;
+  display: inline-block;
+  color: #333232a1;
+  border-radius: 5px;
+  margin-right: 2%;
+  margin-left: 2%;
+}
+
+.m-pagination .center-page a.active,
+.m-pagination .center-page a:hover {
+  background-color: #2abe8b;
+  text-decoration: none;
+  color: white;
+}
+
+
+.disabled-Btn {
+  cursor: default;
+  pointer-events: none;
+}
+
+
+@media (max-width: 767px) {
+  .m-pagination {
+    width: 200px;
+    justify-content: center;
+    font-size: 14px;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .m-pagination .center-page a {
+    display: none !important;
+  }
+
+  .m-pagination .center-page .active {
+    display: inline-block !important;
+  }
+}
+
+@media (max-width: 425px) {
+  .title p {
+    margin-left: 0;
+  }
+
+  .title pre {
+    margin-right: 0;
+  }
+}
+
+
+/*//////////////*/
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 </style>
