@@ -16,27 +16,34 @@
         <ul class="social-media">
           <li>
             <a target="_blank" href="https://github.com/mahsaaarajabpour/my-react-website">
-              <i class="fab fa-github"></i>
+              <v-icon small color="green darken-2">mdi-github</v-icon>
+
+<!--              <i class="fab fa-github"></i>-->
             </a>
           </li>
           <li>
             <a target="_blank" href="https://gitconnected.com/mahsaaarajabpour">
-<!--              <GitConnect class="git-connected"/>-->
+              <v-icon small color="green darken-2">mdi-gitconnected</v-icon>
+              <!--              <GitConnect class="git-connected"/>-->
             </a>
           </li>
           <li>
             <a href="/">
-              <i class="fab fa-facebook-f"></i>
+              <v-icon small color="green">mdi-facebook</v-icon>
+
+<!--              <i class="fab fa-facebook-f"></i>-->
             </a>
           </li>
           <li>
             <a href="/">
-              <i class="fab fa-skype"></i>
+              <v-icon small color="green ">mdi-skype</v-icon>
+              <!--              <i class="fab fa-skype"></i>-->
             </a>
           </li>
           <li>
             <a target="_blank" href="https://www.linkedin.com/in/mahsaa-rajabpour-79806099/">
-              <i class="fab fa-linkedin-in"></i>
+              <v-icon small color="green darken-2">mdi-linkedin</v-icon>
+<!--              <i class="fab fa-linkedin-in"></i>-->
             </a>
           </li>
         </ul>
@@ -243,6 +250,7 @@ footer .row:first-child {
   border-radius: 5px 0 0 5px;
   outline: none;
   width: 65%;
+  background-color: white;
 }
 
 .main-footer .newsletter .subscribe input:focus {

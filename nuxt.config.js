@@ -1,3 +1,5 @@
+import webpack from "webpack";
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -31,6 +33,7 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
+    '@nuxtjs/vuetify',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -51,13 +54,17 @@ export default {
       ]
     }
     ]
-
-
-
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    // vendor:['jquery','bootstrap','popper.js']
+    vendor:['jquery','bootstrap','popper.js'],
+    plugins: [
+      new webpack.ProvidePlugin({
+        jQuery: 'jquery',
+        $: 'jquery',
+        'window.jQuery': 'jquery'
+      })
+    ]
   }
 }
