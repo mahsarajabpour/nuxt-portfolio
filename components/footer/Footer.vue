@@ -17,8 +17,6 @@
           <li>
             <a target="_blank" href="https://github.com/mahsaaarajabpour/my-react-website">
               <v-icon small color="green darken-2">mdi-github</v-icon>
-
-<!--              <i class="fab fa-github"></i>-->
             </a>
           </li>
           <li>
@@ -29,47 +27,43 @@
           </li>
           <li>
             <a href="/">
-              <v-icon small color="green">mdi-facebook</v-icon>
-
-<!--              <i class="fab fa-facebook-f"></i>-->
+              <v-icon small>mdi-facebook</v-icon>
             </a>
           </li>
           <li>
             <a href="/">
-              <v-icon small color="green ">mdi-skype</v-icon>
-              <!--              <i class="fab fa-skype"></i>-->
+              <v-icon small>mdi-skype</v-icon>
             </a>
           </li>
           <li>
             <a target="_blank" href="https://www.linkedin.com/in/mahsaa-rajabpour-79806099/">
               <v-icon small color="green darken-2">mdi-linkedin</v-icon>
-<!--              <i class="fab fa-linkedin-in"></i>-->
             </a>
           </li>
         </ul>
       </div>
 
-      <div class="col-lg-2 col-md-6 col-sm-12  links  ">
+      <div class="col-lg-2 col-md-6 col-sm-12 links">
         <h4>Useful links</h4>
         <ul>
           <li class="">
-            <i class="fas fa-angle-right pr-2"></i>
+            <v-icon small >mdi-chevron-right</v-icon>
             <a href="/">Home</a>
           </li>
           <li>
-            <i class="fas fa-angle-right pr-2"></i>
+            <v-icon small >mdi-chevron-right</v-icon>
             <a href="/">About us</a>
           </li>
           <li>
-            <i class="fas fa-angle-right pr-2"></i>
+            <v-icon small >mdi-chevron-right</v-icon>
             <a href="/">Services</a>
           </li>
           <li>
-            <i class="fas fa-angle-right pr-2"></i>
+            <v-icon small >mdi-chevron-right</v-icon>
             <a href="/">Terms of service</a>
           </li>
           <li>
-            <i class="fas fa-angle-right pr-2"></i>
+            <v-icon small >mdi-chevron-right</v-icon>
             <a href="/">Privacy policy</a>
           </li>
         </ul>
@@ -78,23 +72,23 @@
         <h4>our services</h4>
         <ul>
           <li class="">
-            <i class="fas fa-angle-right pr-2"></i>
+            <v-icon small >mdi-chevron-right</v-icon>
             <a href="/">Web Design</a>
           </li>
           <li>
-            <i class="fas fa-angle-right pr-2"></i>
+            <v-icon small >mdi-chevron-right</v-icon>
             <a href="/">Web Development</a>
           </li>
           <li>
-            <i class="fas fa-angle-right pr-2"></i>
+            <v-icon small >mdi-chevron-right</v-icon>
             <a href="/">Product Management</a>
           </li>
           <li>
-            <i class="fas fa-angle-right pr-2"></i>
+            <v-icon small>mdi-chevron-right</v-icon>
             <a href="/">Marketing</a>
           </li>
           <li>
-            <i class="fas fa-angle-right pr-2"></i>
+            <v-icon small>mdi-chevron-right</v-icon>
             <a href="/">Graphic Design</a>
           </li>
         </ul>
