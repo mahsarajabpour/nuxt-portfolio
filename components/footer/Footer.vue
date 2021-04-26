@@ -47,23 +47,23 @@
         <h4>Useful links</h4>
         <ul>
           <li class="">
-            <v-icon small >mdi-chevron-right</v-icon>
+            <v-icon small>mdi-chevron-right</v-icon>
             <a href="/">Home</a>
           </li>
           <li>
-            <v-icon small >mdi-chevron-right</v-icon>
+            <v-icon small>mdi-chevron-right</v-icon>
             <a href="/">About us</a>
           </li>
           <li>
-            <v-icon small >mdi-chevron-right</v-icon>
+            <v-icon small>mdi-chevron-right</v-icon>
             <a href="/">Services</a>
           </li>
           <li>
-            <v-icon small >mdi-chevron-right</v-icon>
+            <v-icon small>mdi-chevron-right</v-icon>
             <a href="/">Terms of service</a>
           </li>
           <li>
-            <v-icon small >mdi-chevron-right</v-icon>
+            <v-icon small>mdi-chevron-right</v-icon>
             <a href="/">Privacy policy</a>
           </li>
         </ul>
@@ -72,15 +72,15 @@
         <h4>our services</h4>
         <ul>
           <li class="">
-            <v-icon small >mdi-chevron-right</v-icon>
+            <v-icon small>mdi-chevron-right</v-icon>
             <a href="/">Web Design</a>
           </li>
           <li>
-            <v-icon small >mdi-chevron-right</v-icon>
+            <v-icon small>mdi-chevron-right</v-icon>
             <a href="/">Web Development</a>
           </li>
           <li>
-            <v-icon small >mdi-chevron-right</v-icon>
+            <v-icon small>mdi-chevron-right</v-icon>
             <a href="/">Product Management</a>
           </li>
           <li>
@@ -276,13 +276,15 @@ footer .row:first-child {
   font-size: 12px;
 }
 
-.git-connected{
+.git-connected {
   width: 71%;
   height: 21px;
 }
-.git-connected g{
+
+.git-connected g {
   fill: white;
 }
+
 @media (max-width: 400px) {
   .main-footer .row {
     padding: 4rem 1.5rem;

@@ -35,6 +35,10 @@ export default {
   buildModules: [
     '@nuxtjs/vuetify',
   ],
+  faker: {
+    locale: 'en',
+  },
+
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
@@ -58,7 +62,7 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    vendor:['jquery','bootstrap','popper.js'],
+    vendor:['jquery','bootstrap','popper.js','faker'],
     plugins: [
       new webpack.ProvidePlugin({
         jQuery: 'jquery',

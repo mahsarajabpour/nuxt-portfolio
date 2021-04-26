@@ -42,10 +42,10 @@ export default {
         "dotsClass": "slick-dots custom-dot-class",
         "speed": 2000,
         "arrows": true,
-        "autoplay":true,
-        "pause-hover":false,
-        "autoplaySpeed":4500,
-        "interval":10000
+        "autoplay": true,
+        "pause-hover": false,
+        "autoplaySpeed": 4500,
+        "interval": 10000
       }
     }
   }
@@ -101,7 +101,7 @@ export default {
 
 /*////*/
 
- .carousel-item img {
+.carousel-item img {
   filter: brightness(50%);
 }
 
@@ -109,20 +109,20 @@ export default {
   position: absolute;
 }
 
- .carousel-caption h2 {
+.carousel-caption h2 {
   position: relative;
   display: none;
   font-size: 3vw;
   font-weight: bolder;
 }
 
- .carousel-caption p {
+.carousel-caption p {
   position: relative;
   display: none;
   font-size: 1.5vw;
 }
 
- .carousel-caption .btn-read-more {
+.carousel-caption .btn-read-more {
   position: relative;
   display: none;
   background-color: #2abe8b;
@@ -130,7 +130,7 @@ export default {
   font-size: 1vw;
 }
 
- .slick-active .carousel-caption h2 {
+.slick-active .carousel-caption h2 {
   animation-name: h2;
   animation-duration: 2s;
   animation-fill-mode: forwards;
@@ -190,13 +190,15 @@ export default {
     top: -2vw;
   }
 }
+
 @media (max-width: 991px) {
-  .slider{
+  .slider {
     margin-top: 93px;
   }
 }
+
 @media (max-width: 192px) {
-  .slider{
+  .slider {
     margin-top: 133px;
   }
 }

@@ -8,9 +8,9 @@
         </div>
         <div class="center">
           <form class="col-10 login-body" onSubmit={signIn}>
-<!--            {(emailVerify === false || emailVerify === false) &&-->
+            <!--            {(emailVerify === false || emailVerify === false) &&-->
             <p class="alert-danger text-center text-danger"> incorrect data </p>
-<!--            }-->
+            <!--            }-->
 
             <div class="form-group input-group">
               <input class="form-control" type="email"
@@ -41,14 +41,10 @@
 
 <script>
 import Slider from '@/components/slider'
-import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 
-// import VueSlickCarousel from 'vue-slick-carousel'
-// optional style for arrows & dots
-import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 export default {
-  name:"login",
-  components:{Slider}
+  name: "login",
+  components: {Slider}
 }
 </script>
 
@@ -62,32 +58,15 @@ export default {
   text-align: center;
 }
 
-.title {
-  font-family: 'Quicksand',
-  'Source Sans Pro',
-  -apple-system,
-  BlinkMacSystemFont,
-  'Segoe UI',
-  Roboto,
-  'Helvetica Neue',
-  Arial,
-  sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-
 /*///*/
-.login .form-header{
-  border-radius:10px 10px 0 0;
+.login .form-header {
+  border-radius: 10px 10px 0 0;
   background-color: #c7f1e240;
   border-bottom: 1px solid #8e8e8e2b;
   padding: 1rem 1rem 1rem 2rem;
 }
-.login .form-header p{
+
+.login .form-header p {
   padding: 0;
   margin: 0;
 }
@@ -117,11 +96,10 @@ export default {
 .login .form-footer a {
   text-decoration: none;
 }
+
 /*///*/
 
 /*slider*/
-
-
 
 
 .carousel-indicators .active {
@@ -224,13 +202,15 @@ export default {
     top: -2vw;
   }
 }
+
 @media (max-width: 991px) {
-  .slide{
+  .slide {
     margin-top: 93px;
   }
 }
+
 @media (max-width: 192px) {
-  .slide{
+  .slide {
     margin-top: 133px;
   }
 }
