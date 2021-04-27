@@ -43,9 +43,6 @@ import Pagination from "@/components/pagination";
 export default {
   name: "portfolio-id",
   components: {Pagination},
-  mounted() {
-    console.log('o',this.$route.params.id)
-  },
   data() {
     return {
       image: faker.image.image(),

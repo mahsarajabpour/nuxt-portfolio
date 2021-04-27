@@ -18,7 +18,7 @@
             <NuxtLink class="nav-link" to="/blogs/1">Blogs</NuxtLink>
           </li>
           <li class="nav-item">
-            <NuxtLink class="nav-link" to="/create-blog">Add Blog</NuxtLink>
+            <NuxtLink class="nav-link" to="/createBlog">Add Blog</NuxtLink>
           </li>
           <li class="nav-item">
             <NuxtLink class="nav-link" to="/contact">Contact</NuxtLink>
