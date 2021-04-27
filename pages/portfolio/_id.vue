@@ -13,7 +13,7 @@
           <li><a :href="'/portfolio/'">web</a></li>
         </ul>
         <div class="row portfolio-content">
-          <div class="col-md-4 sample-work mt-4" v-for="(i,n) in 9">
+          <div class="col-md-4 sample-work mt-4" v-for="n in 9" :key="n">
             <div class="w-auto sample-work-content ">
               <img :src="image"
                    class="sample-work-img"
@@ -26,11 +26,10 @@
           </div>
         </div>
         <div class="row portfolio-footer justify-content-center">
-          <pagination :pageCount="3"/>
-          <!--        <Pagination pageCount={pageCount}-->
-          <!--                    pageId={props.match.params.id}-->
-          <!--                    hrefLinkName="portfolio"-->
-          <!--        />-->
+          <pagination :pageCount="3"
+                      :pageId="parseInt(this.$route.params.id)"
+                      :hrefLinkName="'portfolio'"
+          />
         </div>
       </div>
     </div>
@@ -44,6 +43,9 @@ import Pagination from "@/components/pagination";
 export default {
   name: "portfolio-id",
   components: {Pagination},
+  mounted() {
+    console.log('o',this.$route.params.id)
+  },
   data() {
     return {
       image: faker.image.image(),

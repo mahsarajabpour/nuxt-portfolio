@@ -1,41 +1,47 @@
 <template>
   <div class="m-pagination">
     <div class="prev">
-      <NuxtLink id="prevBtn" class="disabled-Btn" to="/">
+      <NuxtLink v-if="pageId===1" class="disabled-Btn"
+                :to="'/' + hrefLinkName+'/' + pageId">
         <v-icon small>mdi-arrow-left</v-icon>
       </NuxtLink>
-      <!--       <NuxtLink id="prevBtn" class="prev-page-btn " to="/">-->
-      <!--         <v-icon small>mdi-arrow-left</v-icon>-->
-      <!--      </NuxtLink>-->
+      <NuxtLink v-else class="prev-page-btn"
+                :to="'/' + hrefLinkName+'/' + (pageId-1)">
+        <v-icon small>mdi-arrow-left</v-icon>
+      </NuxtLink>
     </div>
 
     <div class="col col-md-6 center-page">
-      <NuxtLink v-for="(pageNum,i) in pageCount" to="/">{{ pageNum }}</NuxtLink>
+      <NuxtLink v-for="pageNum in pageCount"
+                :key="pageNum.id"
+                :to="'/' + hrefLinkName+'/' + pageNum">
+        {{ pageNum }}
+      </NuxtLink>
     </div>
 
     <div class="next">
-      <NuxtLink id="nextBtn" class="disabled-Btn" to="/">
+      <NuxtLink v-if="pageId===pageCount"
+                class="disabled-Btn"
+                :to="'/' + hrefLinkName+'/' + pageId">
         <v-icon small>mdi-arrow-right</v-icon>
       </NuxtLink>
-      <!--       <NuxtLink id="nextBtn" class="next-page-btn" to="/">-->
-      <!--         <v-icon small>mdi-arrow-right</v-icon>-->
-      <!--       </NuxtLink>-->
+      <NuxtLink v-else class="next-page-btn"
+                :to="'/' + hrefLinkName+'/' + (pageId+1)">
+        <v-icon small>mdi-arrow-right</v-icon>
+      </NuxtLink>
     </div>
-
-
   </div>
 </template>
 
 <script>
 export default {
   name: "Pagination",
-  props: ['pageCount'],
+  props: ['pageCount', 'pageId', 'hrefLinkName']
 }
 </script>
 
 <style>
-/*////*/
-/*pagination*/
+
 .m-pagination {
   margin-bottom: 3%;
   width: 60rem;
@@ -85,7 +91,7 @@ export default {
   margin-left: 2%;
 }
 
-.m-pagination .center-page a.active,
+ .m-pagination .center-page a.nuxt-link-exact-active,
 .m-pagination .center-page a:hover {
   background-color: #2abe8b;
   text-decoration: none;
@@ -111,7 +117,7 @@ export default {
     display: none !important;
   }
 
-  .m-pagination .center-page .active {
+  .m-pagination .center-page a.nuxt-link-exact-active{
     display: inline-block !important;
   }
 }
