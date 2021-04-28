@@ -51,6 +51,9 @@ export default {
 .main li {
   list-style: none;
 }
+.main a{
+text-decoration: none
+}
 
 .main-form {
   margin: 80px 0;
@@ -120,7 +123,7 @@ export default {
 
 .title {
   background-color: #f8f9fa;
-  margin: 78px 0 140px 0;
+  margin: 78px 0 88px 0;
   display: flex;
   justify-content: space-between;
 }

@@ -15,7 +15,7 @@
         </p>
         <ul class="social-media">
           <li>
-            <a target="_blank" href="https://github.com/mahsaaarajabpour/my-react-website">
+            <a target="_blank" href="https://github.com/mahsaaarajabpour/nuxt-portfolio">
               <i class="fab fa-github"></i>
             </a>
           </li>

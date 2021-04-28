@@ -1,14 +1,14 @@
 <template>
   <div class="blog-view">
-    <div class="col-md-12">
       <div class="title">
-        <p>{{ blog.title }}</p>
+        <p>Blog</p>
         <pre>
           <NuxtLink to="/">Home</NuxtLink>   /   <NuxtLink
           :to="'/blogs/ '+ this.$route.query.paramsId">Blogs
          </NuxtLink>
       </pre>
       </div>
+
       <div class="container">
         <div class="row">
           <div class="col-lg-8">
@@ -28,8 +28,10 @@
                       <i class="far fa-clock pr-1"></i>{{ date }}
                     </li>
                     <li>
-                      <i class="far fa-comment-dots pr-1"></i>
-                      Comments
+                      <a href="#comments">
+                        <i class="far fa-comment-dots pr-1"></i>
+                        Comments
+                      </a>
                     </li>
                   </ul>
                   <div class="article-content">
@@ -42,7 +44,7 @@
                 </div>
               </div>
             </article>
-            <div class="user-comments">
+            <div class="user-comments" id="comments">
               <h4>8 comments</h4>
               <div class="comment" v-for="n in 8" :key="n">
                 <img :src="image"
@@ -103,7 +105,6 @@
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -134,9 +135,7 @@ export default {
 </script>
 
 <style scoped>
-.blog-view .title p {
-  text-transform: capitalize;
-}
+
 
 .blog-view img {
   max-width: 100%;
@@ -176,6 +175,9 @@ export default {
   display: inline-block;
   line-height: 1;
   transition: 0.3s;
+}
+.blog-view .blog-card .article-body ul li a{
+  color: #a4afba;
 }
 
 .blog-view .blog-card .article-body ul li:hover {
