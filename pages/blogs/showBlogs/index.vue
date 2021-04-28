@@ -2,7 +2,7 @@
   <div v-if="decreasedBlogs.length!==0" class="col-md-12 blog">
     <div class="row">
       <div class="col-md-4" v-for="blog in decreasedBlogs" :key="blog.id">
-        <div class="entry border ">
+        <div class="entry">
           <img :src="image"
                alt="blog"
                class="card-img"/>
@@ -22,7 +22,7 @@
             </ul>
             <p class="text-left">{{ blog.content }}</p>
             <div class="d-flex justify-content-start">
-              <NuxtLink :to="'/blog/'+ blog.id" class="my-btn">read more</NuxtLink>
+              <NuxtLink :to="{path:'/blog/' + blog.id, query:{paramsId:paramsId}}" class="my-btn">read more</NuxtLink>
             </div>
           </div>
         </div>
@@ -56,13 +56,27 @@ export default {
       date: faker.date.past().getDate() + ' ' +
         faker.date.past().getMonth() + ' ' +
         faker.date.past().getFullYear(),
+      paramsId:{}
     }
+  },
+  mounted() {
+    console.log('ddddd',this.$route.params.id)
+    this.asyncData();
+
   },
   // watch: {
   //   decreasedBlogs: (newDecBlogs, oldDecBlogs) => {
   //     console.log('mounted',newDecBlogs)
   //   }
   // },
+
+  methods: {
+    async asyncData() {
+      let { paramsId} = await this.$route.params.id
+        this.paramsId = paramsId
+    }
+  }
+
 }
 </script>
 
