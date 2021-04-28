@@ -1,89 +1,103 @@
 <template>
   <div class="blog-view">
-    <div class="title">
-      <p>{{ blog.title }}</p>
-      <pre>
-                        <NuxtLink to="/">Home</NuxtLink>   /   <NuxtLink
-        :to="'/blogs/ '+ this.$route.query.paramsId">Blogs</NuxtLink>
-                    </pre>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8">
-          <article class="blog-card entry">
-            <img :src="image"
-                 alt="blog"
-                 class="card-img"/>
-            <div class="article-body">
-              <h2>{{ blog.title }}</h2>
-              <ul class="row">
-                <li>
-                  <i class="fas fa-user pr-1"></i>
-                  {{ blog.writer }}
-                </li>
-                <li>
-                  <i class="far fa-clock pr-1"></i>{{date}}
-                </li>
-                <li>
-                  <i class="far fa-comment-dots pr-1"></i>
-                  Comments
-                </li>
-              </ul>
-              <div class="article-content">
-                <p>{{ blog.content }}</p>
-                <hr/>
-                <ul class="row key-word"><i class="fas fa-tags pr-3"></i>
-                  <li v-for="category in blog.categories" :key="category"> {{ category }} </li>
-                </ul>
+    <div class="col-md-12">
+      <div class="title">
+        <p>{{ blog.title }}</p>
+        <pre>
+          <NuxtLink to="/">Home</NuxtLink>   /   <NuxtLink
+          :to="'/blogs/ '+ this.$route.query.paramsId">Blogs
+         </NuxtLink>
+      </pre>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <article class="blog-card entry">
+              <img :src="image"
+                   alt="blog"
+                   class="card-img"/>
+              <div class="article-body row">
+                <div class="col">
+                  <h2>{{ blog.title }}</h2>
+                  <ul class="row">
+                    <li>
+                      <i class="fas fa-user pr-1"></i>
+                      {{ blog.writer }}
+                    </li>
+                    <li>
+                      <i class="far fa-clock pr-1"></i>{{ date }}
+                    </li>
+                    <li>
+                      <i class="far fa-comment-dots pr-1"></i>
+                      Comments
+                    </li>
+                  </ul>
+                  <div class="article-content">
+                    <p>{{ blog.content }}</p>
+                    <hr/>
+                    <ul class="row key-word"><i class="fas fa-tags pr-3"></i>
+                      <li v-for="category in blog.categories" :key="category"> {{ category }}</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <div class="user-comments">
+              <h4>8 comments</h4>
+              <div class="comment" v-for="n in 8" :key="n">
+                <img :src="image"
+                     alt="blog"
+                     class="avatar"/>
+                <div class="row">
+                  <h5>{{fullName}}</h5>
+                  <p><i class="fas fa-reply"></i> Reply</p>
+                </div>
+                <time class="date">{{date}}</time>
+                <p class="message">{{sentences}}</p>
               </div>
             </div>
-          </article>
-
-          <div class="user-comments">
-            <h4>8 comments</h4>
-<!--            {renderComments()}-->
+            <div class="reply entry">
+              <!--            {renderReply()}-->
+            </div>
           </div>
-          <div class="reply entry">
-<!--            {renderReply()}-->
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="search-panel entry">
-            <h3 class="search-title ">Search</h3>
-            <div class="search-bar d-flex justify-content-center">
-              <input type="text"/>
-              <button class="my-btn"><i class="fas fa-search"></i></button>
-            </div>
-            <div class="categories">
-              <h3>Categories</h3>
-              <ul>
-                <li><a href="/">General <span>(15)</span></a></li>
-                <li><a href="/">Lifestyle <span>(14)</span></a></li>
-                <li><a href="/">Travel<span>(8)</span></a></li>
-                <li><a href="/">Design<span>(12)</span></a></li>
-                <li><a href="/">Creative<span>(5)</span></a></li>
-                <li><a href="/">Education<span>(10)</span></a></li>
-              </ul>
-            </div>
-            <div class="recent-posts">
-              <h3>Recent Posts</h3>
-              <ul>
-<!--                {renderRecentPosts()}-->
-              </ul>
-            </div>
-            <div class="tags">
-              <h3>Tags</h3>
-              <ul>
-                <li><a href="/">front-end</a></li>
-                <li><a href="/">It</a></li>
-                <li><a href="/">react.js</a></li>
-                <li><a href="/">mac</a></li>
-                <li><a href="/">vuejs</a></li>
-                <li><a href="/">javaScript</a></li>
-                <li><a href="/">computer</a></li>
-                <li><a href="/">git</a></li>
-                <li><a href="/">back-end</a></li>
-              </ul>
+          <div class="col-lg-4">
+            <div class="search-panel entry">
+              <h3 class="search-title ">Search</h3>
+              <div class="search-bar d-flex justify-content-center">
+                <input type="text"/>
+                <button class="my-btn"><i class="fas fa-search"></i></button>
+              </div>
+              <div class="categories">
+                <h3>Categories</h3>
+                <ul>
+                  <li><a href="/">General <span>(15)</span></a></li>
+                  <li><a href="/">Lifestyle <span>(14)</span></a></li>
+                  <li><a href="/">Travel<span>(8)</span></a></li>
+                  <li><a href="/">Design<span>(12)</span></a></li>
+                  <li><a href="/">Creative<span>(5)</span></a></li>
+                  <li><a href="/">Education<span>(10)</span></a></li>
+                </ul>
+              </div>
+              <div class="recent-posts">
+                <h3>Recent Posts</h3>
+                <ul>
+                  <!--                {renderRecentPosts()}-->
+                </ul>
+              </div>
+              <div class="tags">
+                <h3>Tags</h3>
+                <ul>
+                  <li><a href="/">front-end</a></li>
+                  <li><a href="/">It</a></li>
+                  <li><a href="/">react.js</a></li>
+                  <li><a href="/">mac</a></li>
+                  <li><a href="/">vuejs</a></li>
+                  <li><a href="/">javaScript</a></li>
+                  <li><a href="/">computer</a></li>
+                  <li><a href="/">git</a></li>
+                  <li><a href="/">back-end</a></li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -97,21 +111,23 @@ import faker from "faker/locale/en";
 
 export default {
   name: "Blog",
-  data(){
-    return{
+  data() {
+    return {
       image: faker.image.image(),
       date: faker.date.past().getDate() + ' ' +
         faker.date.past().getMonth() + ' ' +
         faker.date.past().getFullYear(),
-      blog:[]
+      sentences:faker.lorem.sentences(),
+      fullName:faker.name.firstName() + ' ' + faker.name.lastName(),
+      blog: []
     }
   },
   mounted() {
     this.getBlog()
   },
-  methods:{
-   async getBlog(){
-      this.blog=this.$route.query.blog
+  methods: {
+    async getBlog() {
+      this.blog = this.$route.query.blog
     }
   }
 }
@@ -139,6 +155,7 @@ export default {
   transition: 0.3s;
   font-weight: bold;
   margin: 10px 0 20px 0;
+  text-align: left;
 }
 
 .blog-view .blog-card .article-body h2:hover {
@@ -164,10 +181,12 @@ export default {
 .blog-view .blog-card .article-body ul li:hover {
   cursor: pointer;
 }
-.article-content p{
+
+.article-content p {
   color: #444444;
   line-height: 24px;
   font-size: 15px;
+  text-align: left;
 }
 
 .article-content .key-word {
@@ -182,9 +201,10 @@ export default {
 }
 
 /*///*/
-.blog-view h4 {
+.user-comments h4 {
   font-weight: bold;
   color: #444444;
+  text-align: left;
 }
 
 .blog-view .user-comments .comment {
@@ -224,6 +244,7 @@ export default {
   margin-left: 5rem;
   margin-bottom: 1rem;
   color: #444444;
+  text-align: left;
 }
 
 .blog-view .user-comments .comment .date {
@@ -232,6 +253,7 @@ export default {
   font-size: 14px;
   color: #c1c8d0;
   margin-bottom: 5px;
+  text-align: left;
 }
 
 .blog-view .reply .container {
@@ -283,8 +305,7 @@ export default {
 .blog-view .search-panel .search-bar,
 .blog-view .search-panel .categories,
 .blog-view .search-panel .recent-posts,
-.blog-view .search-panel .tags
-{
+.blog-view .search-panel .tags {
   margin-bottom: 40px;
 }
 
@@ -293,7 +314,8 @@ export default {
   width: 50px;
   background: #556270;
 }
-.search-panel .search-bar .my-btn:hover{
+
+.search-panel .search-bar .my-btn:hover {
   background: #6b7b8d;
 }
 
@@ -308,38 +330,43 @@ export default {
   outline: none;
 }
 
-.blog-view ul{
+.blog-view ul {
   padding: 0;
 }
-.blog-view li{
+
+.blog-view li {
   list-style: none;
   padding-bottom: 10px;
 }
-.blog-view .categories ul li a{
+
+.blog-view .categories ul li a {
   text-decoration: none;
   color: #6b7b8d;
 }
-.blog-view .categories ul li a:hover{
+
+.blog-view .categories ul li a:hover {
   color: #2abe8b;
 }
+
 .blog-view .categories ul li a:hover span,
-.blog-view .categories ul li span{
+.blog-view .categories ul li span {
   color: #c1c8d0;
   font-size: 14px;
   padding-left: 5px;
 }
+
 /*////*/
 
-.blog-view .recent-posts li{
-  margin-bottom:15px ;
+.blog-view .recent-posts li {
+  margin-bottom: 15px;
 }
 
-.blog-view .recent-posts img{
+.blog-view .recent-posts img {
   width: 80px;
   padding: 0;
 }
 
-.blog-view .recent-posts p{
+.blog-view .recent-posts p {
   font-weight: bold;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -347,21 +374,25 @@ export default {
   margin: 0;
   padding-bottom: 8px;
 }
-.blog-view .recent-posts p:hover{
+
+.blog-view .recent-posts p:hover {
   cursor: pointer;
   color: #2abe8b;
 }
-.blog-view .recent-posts time{
+
+.blog-view .recent-posts time {
   display: block;
   /*margin-left: 20px;*/
   font-style: italic;
   font-size: 14px;
   color: #c1c8d0;
 }
-.blog-view .tags ul li{
+
+.blog-view .tags ul li {
   display: inline-block;
 }
-.blog-view .tags ul li a{
+
+.blog-view .tags ul li a {
   text-decoration: none;
   color: #96a2af;
   font-size: 14px;
@@ -372,7 +403,8 @@ export default {
   border-radius: 4px;
   transition: 0.3s;
 }
-.blog-view .tags ul li a:hover{
+
+.blog-view .tags ul li a:hover {
   background-color: #2abe8b;
   color: #ffffff;
 }
