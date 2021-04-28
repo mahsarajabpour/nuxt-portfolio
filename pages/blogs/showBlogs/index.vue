@@ -34,7 +34,7 @@
       <div class="col mb-5" v-if="error"><p class="row justify-content-center">{{ error }}</p></div>
       <div class="col mb-5 loading" v-else>
         <p class="row justify-content-center">
-          <v-icon small>mdi-loading</v-icon>
+          <i class="fa fa-spinner fa-spin p-1"/>
           Loading ...
         </p>
         <p class="row vpn">please connect to your vpn</p>
@@ -120,7 +120,8 @@ export default {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.blog .blog-writer{
+
+.blog .blog-writer {
   overflow: hidden;
   /*text-overflow: ellipsis;*/
   white-space: nowrap;

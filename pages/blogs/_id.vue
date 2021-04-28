@@ -16,17 +16,8 @@
         <div class="row blogs-header justify-content-between">
           <h5>
             <NuxtLink
-              :to="{path:'/createBlog', query:{paramsId:this.$route.params.id}}"
-            >
-              <!--            to={{-->
-              <!--                       pathname: '/create-blog',-->
-              <!--            state: {-->
-              <!--            paramsId: props.match.params.id,-->
-              <!--            }-->
-              <!--            }}>-->
-
-              <v-icon medium>mdi-pencil-plus</v-icon>
-              click to create new blog
+              :to="{path:'/createBlog', query:{paramsId:this.$route.params.id}}">
+              <i class="fas fa-edit"></i>click to create new blog
             </NuxtLink>
           </h5>
           <p>page {{ this.$route.params.id }} of {{ blogPageCount }}</p>
@@ -37,7 +28,6 @@
                      :error="error"
                      :decreasedBlogs="decreasedBlogs"
           />
-          <!--          <ShowBlogs-->
           <!--            searchResults={searchResults}-->
         </div>
 
