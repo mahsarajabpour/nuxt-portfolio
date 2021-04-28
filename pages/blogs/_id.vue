@@ -15,7 +15,9 @@
 
         <div class="row blogs-header justify-content-between">
           <h5>
-            <NuxtLink :to="'/createBlog'" :state="this.$route.params.id">
+            <NuxtLink
+              :to="{path:'/createBlog', query:{paramsId:this.$route.params.id}}"
+            >
               <!--            to={{-->
               <!--                       pathname: '/create-blog',-->
               <!--            state: {-->
