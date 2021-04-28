@@ -59,7 +59,47 @@
               </div>
             </div>
             <div class="reply entry">
-              <!--            {renderReply()}-->
+              <div class="container ">
+                <div class="col-md-12">
+                  <h4 class="text-left pl-3">Leave a Reply</h4>
+                  <p class="text-left pl-3">Your email address will not be published. Required fields are marked *</p>
+                  <div class="row m-0">
+                    <div class="col-md-6 form-group pl-0 reply-name">
+                      <input class="form-control" type="text"
+                             placeholder="your name"
+                             required
+                      />
+                    </div>
+                    <div class="col-md-6 form-group pl-0">
+                      <input class="form-control"
+                             type="email" placeholder="your Email"
+                             required
+                      />
+                    </div>
+                  </div>
+                  <div class="row m-0">
+                    <div class="col form-group pl-0">
+                      <input class="form-control" type="text"
+                             placeholder="your website"
+                             required
+                      />
+                    </div>
+                  </div>
+                  <div class="row m-0">
+                    <div class="col form-group pl-0 ">
+                        <textarea class="form-control"
+                                  placeholder="your comment"
+                                  rows="5"
+                                  required
+                        ></textarea>
+                    </div>
+                  </div>
+                  <div class="row m-0 send-message">
+                    <button type="submit" class="my-btn">Post Comment</button>
+                  </div>
+                </div>
+
+              </div>
             </div>
           </div>
           <div class="col-lg-4">
@@ -137,17 +177,17 @@ export default {
 <style scoped>
 
 
-.blog-view img {
+ img {
   max-width: 100%;
   height: auto;
   padding-bottom: 30px;
 }
 
-.blog-view .blog-card .article-body {
+ .blog-card .article-body {
   padding: 20px;
 }
 
-.blog-view .blog-card .article-body h2 {
+ .blog-card .article-body h2 {
   font-size: 32px;
   line-height: 38px;
   color: #556270;
@@ -157,17 +197,17 @@ export default {
   text-align: left;
 }
 
-.blog-view .blog-card .article-body h2:hover {
+ .blog-card .article-body h2:hover {
   color: #2abe8b;
   cursor: pointer;
 }
 
-.blog-view .blog-card .article-body ul {
+ .blog-card .article-body ul {
   margin: 10px 0 20px 0;
   padding: 0;
 }
 
-.blog-view .blog-card .article-body ul li {
+ .blog-card .article-body ul li {
   list-style: none;
   padding-right: 15px;
   color: #a4afba;
@@ -176,11 +216,11 @@ export default {
   line-height: 1;
   transition: 0.3s;
 }
-.blog-view .blog-card .article-body ul li a{
+ .blog-card .article-body ul li a{
   color: #a4afba;
 }
 
-.blog-view .blog-card .article-body ul li:hover {
+ .blog-card .article-body ul li:hover {
   cursor: pointer;
 }
 
@@ -209,47 +249,47 @@ export default {
   text-align: left;
 }
 
-.blog-view .user-comments .comment {
+ .user-comments .comment {
   margin: 30px 0 80px 0;
   position: relative;
 }
 
-.blog-view .user-comments .comment .avatar {
+ .user-comments .comment .avatar {
   width: 55px;
   float: left;
 }
 
-.blog-view .user-comments .comment div {
+ .user-comments .comment div {
   margin-left: 5rem;
   margin-bottom: 2px;
   color: #444444;
 }
 
-.blog-view .user-comments .comment div h5,
-.blog-view .user-comments .comment div p {
+ .user-comments .comment div h5,
+ .user-comments .comment div p {
   font-weight: bold;
   transition: 0.3s;
   margin: 0 20px 0 0;
 }
 
-.blog-view .user-comments .comment div p {
+ .user-comments .comment div p {
   color: #556270;
 }
 
-.blog-view .user-comments .comment div h5:hover,
-.blog-view .user-comments .comment div p:hover {
+ .user-comments .comment div h5:hover,
+ .user-comments .comment div p:hover {
   color: #2abe8b;
   cursor: pointer;
 }
 
-.blog-view .user-comments .comment .message {
+ .user-comments .comment .message {
   margin-left: 5rem;
   margin-bottom: 1rem;
   color: #444444;
   text-align: left;
 }
 
-.blog-view .user-comments .comment .date {
+ .user-comments .comment .date {
   margin-left: 5rem;
   display: block;
   font-size: 14px;
@@ -258,66 +298,66 @@ export default {
   text-align: left;
 }
 
-.blog-view .reply .container {
+ .reply .container {
   padding: 20px;
 }
 
-.blog-view .reply .container p {
+ .reply .container p {
   font-size: 14px;
   color: #444444;
 }
 
-.blog-view .reply .container .row {
+ .reply .container .row {
   margin-bottom: 1rem;
   padding: 0 15px;
 }
 
-.blog-view .form-control::placeholder,
-.blog-view .form-control {
+ .form-control::placeholder,
+ .form-control {
   color: #495057a6;
   text-transform: capitalize;
   font-size: 14px;
 }
 
-.blog-view .form-control:focus {
+ .form-control:focus {
   border-color: #2abe8b;
   box-shadow: 0 0 0 0.2rem rgba(61, 190, 139, 0.17)
 }
 
-.blog-view .reply .my-btn {
+ .reply .my-btn {
   background-color: #556270;
 }
 
-.blog-view .reply .my-btn:hover {
+ .reply .my-btn:hover {
   background-color: #2abe8b;
 }
 
 /*///search*/
-.blog-view .search-panel {
+ .search-panel {
   padding: 38px;
 }
 
-.blog-view .search-panel h3 {
+ .search-panel h3 {
   font-weight: bold;
   color: #556270;
   font-size: 20px;
   margin-bottom: 20px;
 }
 
-.blog-view .search-panel .search-bar,
-.blog-view .search-panel .categories,
-.blog-view .search-panel .recent-posts,
-.blog-view .search-panel .tags {
+ .search-panel .search-bar,
+ .search-panel .categories,
+ .search-panel .recent-posts,
+ .search-panel .tags {
   margin-bottom: 40px;
 }
 
-.search-panel .search-bar .my-btn {
+ .search-bar .my-btn {
   border-radius: 0 6px 6px 0;
   width: 50px;
   background: #556270;
 }
 
-.search-panel .search-bar .my-btn:hover {
+ .search-bar .my-btn:hover {
   background: #6b7b8d;
 }
 
@@ -341,17 +381,17 @@ export default {
   padding-bottom: 10px;
 }
 
-.blog-view .categories ul li a {
+ .categories ul li a {
   text-decoration: none;
   color: #6b7b8d;
 }
 
-.blog-view .categories ul li a:hover {
+ .categories ul li a:hover {
   color: #2abe8b;
 }
 
-.blog-view .categories ul li a:hover span,
-.blog-view .categories ul li span {
+ .categories ul li a:hover span,
+ .categories ul li span {
   color: #c1c8d0;
   font-size: 14px;
   padding-left: 5px;
@@ -359,16 +399,16 @@ export default {
 
 /*////*/
 
-.blog-view .recent-posts li {
+ .recent-posts li {
   margin-bottom: 15px;
 }
 
-.blog-view .recent-posts img {
+ .recent-posts img {
   width: 80px;
   padding: 0;
 }
 
-.blog-view .recent-posts p {
+ .recent-posts p {
   font-weight: bold;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -377,24 +417,23 @@ export default {
   padding-bottom: 8px;
 }
 
-.blog-view .recent-posts p:hover {
+ .recent-posts p:hover {
   cursor: pointer;
   color: #2abe8b;
 }
 
-.blog-view .recent-posts time {
+ .recent-posts time {
   display: block;
-  /*margin-left: 20px;*/
   font-style: italic;
   font-size: 14px;
   color: #c1c8d0;
 }
 
-.blog-view .tags ul li {
+ .tags ul li {
   display: inline-block;
 }
 
-.blog-view .tags ul li a {
+ .tags ul li a {
   text-decoration: none;
   color: #96a2af;
   font-size: 14px;
@@ -406,13 +445,13 @@ export default {
   transition: 0.3s;
 }
 
-.blog-view .tags ul li a:hover {
+ .tags ul li a:hover {
   background-color: #2abe8b;
   color: #ffffff;
 }
 
 @media (max-width: 768px) {
-  .blog-view .reply .container .row .reply-name {
+   .reply .container .row .reply-name {
     padding-bottom: 15px;
   }
 }
