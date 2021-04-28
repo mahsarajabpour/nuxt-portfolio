@@ -47,9 +47,11 @@ export default {
 .main {
   margin: 94px 0;
 }
-.main li{
+
+.main li {
   list-style: none;
 }
+
 .main-form {
   margin: 80px 0;
   border-radius: 10px;

@@ -23,7 +23,8 @@
               <!--            }-->
               <!--            }}>-->
 
-              <i class="fas fa-edit"></i>click to create new blog
+              <v-icon medium>mdi-pencil-plus</v-icon>
+              click to create new blog
             </NuxtLink>
           </h5>
           <p>page {{ this.$route.params.id }} of {{ blogPageCount }}</p>
@@ -71,41 +72,33 @@ export default {
     }
   },
   mounted() {
-     this.getBlogs()
-    // console.log('s',x)
-
+    this.getBlogs()
   },
-  computed: {
-
-  },
+  computed: {},
   updated() {
     this.decreasedBlog()
   },
   methods: {
-   async getBlogs() {
-     return await axios.get('https://my-shop-react-cdca2-default-rtdb.firebaseio.com/blog.json')
-       .then(res => {
-         for (let key in res.data) {
-           res.data[key].id = key
-         }
-         this.blogs = Object.keys(res.data).map((key) => res.data[key])
-         this.blogPageCount = Math.ceil(this.blogs.length / 6)
-         // console.log('blogs:', this.blogs)
-         // console.log('page count:', this.blogPageCount)
-       })
-       .catch(err => {
-         console.log(err)
-       })
+    async getBlogs() {
+      return await axios.get('https://my-shop-react-cdca2-default-rtdb.firebaseio.com/blog.json')
+        .then(res => {
+          for (let key in res.data) {
+            res.data[key].id = key
+          }
+          this.blogs = Object.keys(res.data).map((key) => res.data[key])
+          this.blogPageCount = Math.ceil(this.blogs.length / 6)
+        })
+        .catch(err => {
+          console.log(err)
+        })
     },
     decreasedBlog() {
       const nowPSize = this.$route.params.id * this.pageSize;
       const firstVideoNumArray = nowPSize - this.pageSize;
-      // console.log('1111',this.blogs.length)
       if (this.blogs.length !== 0) {
         if (this.checked === false) {
-        this.decreasedBlogs=this.blogs.slice(firstVideoNumArray, nowPSize)
-        console.log('decreased:',this.decreasedBlogs)
-        this.checked=true
+          this.decreasedBlogs = this.blogs.slice(firstVideoNumArray, nowPSize)
+          this.checked = true
         }
       }
     },
@@ -118,7 +111,7 @@ export default {
 }
 </script>
 
-<style >
+<style>
 .blogs-view .blogs-header {
   padding: 15px 15px 40px 15px;
 }
@@ -134,21 +127,6 @@ export default {
   color: #2abe8b;
 }
 
-/*.blogs-view .blog .content {*/
-/*  padding: 25px;*/
-/*}*/
-
-/*.blogs-view .blog .content h2 {*/
-/*  font-size: 20px;*/
-/*  line-height: 26px;*/
-/*  font-weight: bold;*/
-/*  padding: 0;*/
-/*  margin: 0 0 20px 0;*/
-
-/*  overflow: hidden;*/
-/*  text-overflow: ellipsis;*/
-/*  white-space: nowrap;*/
-/*}*/
 
 .blogs-view a:hover {
   text-decoration: none;
@@ -158,14 +136,7 @@ export default {
   margin: 78px 0 100px 0;
 }
 
-/*.blogs-view .blog .content .blog-title a {*/
-/*  color: #556270;*/
-/*  transition: 0.3s;*/
-/*}*/
-
-/*.blogs-view .blog .content .blog-title a:hover {*/
-/*  color: #2abe8b;*/
-/*}*/
+/*/////search*/
 
 .blogs-view .search-panel {
   margin-bottom: 40px;
@@ -174,35 +145,6 @@ export default {
 .blogs-view .search-panel .search-bar .my-btn {
   width: 80px;
 }
-
-/*.blogs-view .blog .content ul {*/
-/*  display: flex;*/
-/*  padding: 0;*/
-/*}*/
-
-/*.blogs-view .blog .content ul li i {*/
-/*  padding: 0.25rem 0.25rem 0.25rem 0;*/
-/*}*/
-
-
-/*.blogs-view .blog .content ul li,*/
-/*.blogs-view .blog .content ul li a {*/
-/*  list-style: none;*/
-/*  padding: 0;*/
-/*  color: #a4afba;*/
-/*  font-size: 14px;*/
-/*  line-height: 1;*/
-/*}*/
-
-/*.blogs-view .blog .entry .content p {*/
-/*  color: #444444;*/
-/*  line-height: 24px;*/
-/*  font-size: 15px;*/
-
-/*  overflow: hidden;*/
-/*  text-overflow: ellipsis;*/
-/*  white-space: nowrap;*/
-/*}*/
 
 
 .blogs-view .search-bar #search-bar-blogs {
@@ -222,34 +164,5 @@ export default {
   justify-content: center;
 }
 
-.blogs-view .loading {
-  font-size: 26px;
-  color: #556270;
-  margin-bottom: 50px;
-}
 
-.blogs-view .loading .vpn {
-  justify-content: center;
-  font-size: 0.9rem;
-  text-align: center;
-}
-
-
-@media (max-width: 1024px ) and (min-width: 768px) {
-  /*.blogs-view .blog .content ul {*/
-  /*  flex-direction: column;*/
-  /*}*/
-  /*.blogs-view .blog .content ul li {*/
-  /*  margin-top: 10px;*/
-  /*}*/
-}
-
-@media (max-width: 450px) {
-  /*.blogs-view .blog .content ul {*/
-  /*  flex-direction: column;*/
-  /*}*/
-  /*.blogs-view .blog .content ul li {*/
-  /*  margin-top: 10px;*/
-  /*}*/
-}
 </style>
