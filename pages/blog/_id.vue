@@ -1,7 +1,7 @@
 <template>
   <div class="blog-view">
     <div class="title">
-<!--      <p>{{ blog.title }}</p>-->
+      <p>{{ blog.title }}</p>
       <pre>
                         <NuxtLink to="/">Home</NuxtLink>   /   <NuxtLink
         :to="'/blogs/ '+ this.$route.query.paramsId">Blogs</NuxtLink>
@@ -10,7 +10,35 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8">
-<!--          {renderBlogCard()}-->
+          <article class="blog-card entry">
+            <img :src="image"
+                 alt="blog"
+                 class="card-img"/>
+            <div class="article-body">
+              <h2>{{ blog.title }}</h2>
+              <ul class="row">
+                <li>
+                  <i class="fas fa-user pr-1"></i>
+                  {{ blog.writer }}
+                </li>
+                <li>
+                  <i class="far fa-clock pr-1"></i>{{date}}
+                </li>
+                <li>
+                  <i class="far fa-comment-dots pr-1"></i>
+                  Comments
+                </li>
+              </ul>
+              <div class="article-content">
+                <p>{{ blog.content }}</p>
+                <hr/>
+                <ul class="row key-word"><i class="fas fa-tags pr-3"></i>
+                  <li v-for="category in blog.categories" :key="category"> {{ category }} </li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
           <div class="user-comments">
             <h4>8 comments</h4>
 <!--            {renderComments()}-->
@@ -65,8 +93,27 @@
 </template>
 
 <script>
+import faker from "faker/locale/en";
+
 export default {
-  name: "Blog"
+  name: "Blog",
+  data(){
+    return{
+      image: faker.image.image(),
+      date: faker.date.past().getDate() + ' ' +
+        faker.date.past().getMonth() + ' ' +
+        faker.date.past().getFullYear(),
+      blog:[]
+    }
+  },
+  mounted() {
+    this.getBlog()
+  },
+  methods:{
+   async getBlog(){
+      this.blog=this.$route.query.blog
+    }
+  }
 }
 </script>
 

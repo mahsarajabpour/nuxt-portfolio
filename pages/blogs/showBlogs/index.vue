@@ -22,7 +22,12 @@
             </ul>
             <p class="text-left">{{ blog.content }}</p>
             <div class="d-flex justify-content-start">
-              <NuxtLink :to="{path:'/blog/' + blog.id, query:{paramsId:paramsId}}" class="my-btn">read more</NuxtLink>
+              <NuxtLink
+                :to="{path:'/blog/' + blog.id,
+                      query:{paramsId:paramsId,blog},
+
+                     }"
+                class="my-btn">read more</NuxtLink>
             </div>
           </div>
         </div>
@@ -60,9 +65,7 @@ export default {
     }
   },
   mounted() {
-    console.log('ddddd',this.$route.params.id)
     this.asyncData();
-
   },
   // watch: {
   //   decreasedBlogs: (newDecBlogs, oldDecBlogs) => {
@@ -72,11 +75,9 @@ export default {
 
   methods: {
     async asyncData() {
-      let { paramsId} = await this.$route.params.id
-        this.paramsId = paramsId
+        this.paramsId =  this.$route.params.id
     }
-  }
-
+  },
 }
 </script>
 
