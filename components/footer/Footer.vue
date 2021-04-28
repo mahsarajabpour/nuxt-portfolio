@@ -16,7 +16,7 @@
         <ul class="social-media">
           <li>
             <a target="_blank" href="https://github.com/mahsaaarajabpour/my-react-website">
-              <v-icon small color="green darken-2">mdi-github</v-icon>
+              <i class="fab fa-github"></i>
             </a>
           </li>
           <li>
@@ -27,17 +27,17 @@
           </li>
           <li>
             <a href="/">
-              <v-icon small>mdi-facebook</v-icon>
+              <i class="fab fa-facebook-f"></i>
             </a>
           </li>
           <li>
             <a href="/">
-              <v-icon small>mdi-skype</v-icon>
+              <i class="fab fa-skype"></i>
             </a>
           </li>
           <li>
             <a target="_blank" href="https://www.linkedin.com/in/mahsaa-rajabpour-79806099/">
-              <v-icon small color="green darken-2">mdi-linkedin</v-icon>
+              <i class="fab fa-linkedin-in"></i>
             </a>
           </li>
         </ul>
