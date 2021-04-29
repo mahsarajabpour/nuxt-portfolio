@@ -1,78 +1,87 @@
 <template>
   <v-app class="portfolio">
     <Title :titleName="'Portfolio'"/>
+    <v-container >
+      <div class="col-md-12">
+        <ul class="row portfolio-header justify-content-center">
+          <li><a class="active" href="/">All</a></li>
+          <li><a :href="'/portfolio/'">app</a></li>
+          <li><a :href="'/portfolio/'">card</a></li>
+          <li><a :href="'/portfolio/'">web</a></li>
+        </ul>
+        <v-row class="portfolio-content" justify="center">
 
-    <v-row justify="center">
-      <v-dialog
-        v-model="dialog"
-        width="600px"
-      >
-        <template v-slot:activator="{ on, attrs }">
-          <v-container>
-            <div class="col-md-12 align-items-center">
-              <ul class="row portfolio-header justify-content-center">
-                <li><a class="active" href="/">All</a></li>
-                <li><a :href="'/portfolio/'">app</a></li>
-                <li><a :href="'/portfolio/'">card</a></li>
-                <li><a :href="'/portfolio/'">web</a></li>
-              </ul>
-              <v-row class="portfolio-content">
-                <div class="col-md-4 sample-work mt-4" v-for="repo in repos" :key="repo.id">
-                  <div class="w-auto sample-work-content ">
-                    <v-img alt="This is pic of video." :src="image" class="sample-work-img">
-                    </v-img>
-                    <div class="sample-work-info ">
-                      <p>{{ repo.name }}</p>
-                      <v-btn
-                        color="primary"
-                        dark
-                        v-bind="attrs"
-                        v-on="on"
-                      >
-                        Open Dialog
-                      </v-btn>
+           <v-dialog
+              v-model="dialog"
+              width="700px"
+            >
+              <template v-slot:activator="{ on, attrs }">
+                <v-row class="portfolio-content">
+                  <div class="col-md-4 sample-work mt-4" v-for="repo in repos" :key="repo.id">
+                    <div class="w-auto sample-work-content ">
+                      <v-img alt="This is pic of video." :src="image" class="sample-work-img">
+                      </v-img>
+                      <div class="sample-work-info ">
+                        <v-btn
+                          class="more-info text-white"
+                          v-bind="attrs"
+                          v-on="on"
+                          plain
+                          x-large
+                          light
+                          color="white"
+                          @click="setRepo(repo)"
+                        >
+                          {{ repo.name }}
+                        </v-btn>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </v-row>
-              <v-row justify="center" class="portfolio-footer">
-                <pagination :pageCount="pageCount"
-                            :pageId="paramsId"
-                            :hrefLinkName="'portfolio'"
-                />
-              </v-row>
-            </div>
-          </v-container>
-        </template>
-        <v-card>
-          <v-card-title>
-            <span class="headline">Use Google's location service?</span>
-          </v-card-title>
-          <v-card-text>
-            Lorem ipsum dolor sit amet, semper quis, sapien id natoque elit. Nostra urna at, magna at neque sed sed ante
-            impen. Feugiat metus sit nec in aliquet amet, porttitor pre
-            +
-          </v-card-text>
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn
-              color="green darken-1"
-              text
-              @click="dialog = false"
-            >
-              Disagree
-            </v-btn>
-            <v-btn
-              color="green darken-1"
-              text
-              @click="dialog = false"
-            >
-              Agree
-            </v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-    </v-row>
+
+                </v-row>
+              </template>
+              <v-card>
+                <v-card-title>
+                  <span class="headline">{{repo.name}} </span>
+                </v-card-title>
+                <v-card-text v-if="repo">
+                  owner: {{repo.owner.login}}
+                  <br>
+                  owner url: {{repo.owner.url}}
+                  <br>
+                full name repository: {{repo.full_name}}
+                  <br>
+                  git url: {{repo.git_url}}
+                  <br>
+                  id: {{repo.id}}
+                  <br>
+                  size: {{repo.size}}
+                  <br>
+                  watchers: {{repo.watchers}}
+                </v-card-text>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn
+                    color="green darken-1"
+                    text
+                    @click="dialog = false"
+                  >
+                    exit
+                  </v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-dialog>
+
+
+        </v-row>
+        <v-row class="portfolio-footer" justify="center">
+          <pagination :pageCount="pageCount"
+                      :pageId="paramsId"
+                      :hrefLinkName="'portfolio'"
+          />
+        </v-row>
+      </div>
+    </v-container>
   </v-app>
 </template>
 
@@ -94,7 +103,8 @@ export default {
       pageCount: 0,
       check: false,
       dialog: false,
-      paramsId: 0
+      paramsId: 0,
+      repo:false
     }
   },
   mounted() {
@@ -105,7 +115,7 @@ export default {
     async asyncData() {
       this.paramsId = parseInt(this.$route.params.id)
     },
-    getRepo() {
+    async getRepo() {
       axios.get('https://api.github.com/users/mahsaaarajabpour/repos').then(res => {
         this.repos = res.data;
         console.log('repos', res.data)
@@ -117,6 +127,9 @@ export default {
         console.log(err)
       })
     },
+   async setRepo(value){
+      this.repo=value
+    }
   }
 }
 </script>
@@ -181,7 +194,7 @@ export default {
   padding: 0 10px;
 }
 
-.sample-work-info p {
+.sample-work-info .more-info {
   margin: 0;
   color: #ffffff;
   font-weight: bold;
