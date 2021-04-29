@@ -1,7 +1,7 @@
 <template>
   <v-app class="portfolio">
     <Title :titleName="'Portfolio'"/>
-    <v-container >
+    <v-container>
       <div class="col-md-12">
         <ul class="row portfolio-header justify-content-center">
           <li><a class="active" href="/">All</a></li>
@@ -10,69 +10,34 @@
           <li><a :href="'/portfolio/'">web</a></li>
         </ul>
         <v-row class="portfolio-content" justify="center">
-
-           <v-dialog
-              v-model="dialog"
-              width="700px"
-            >
-              <template v-slot:activator="{ on, attrs }">
-                <v-row class="portfolio-content">
-                  <div class="col-md-4 sample-work mt-4" v-for="repo in repos" :key="repo.id">
-                    <div class="w-auto sample-work-content ">
-                      <v-img alt="This is pic of video." :src="image" class="sample-work-img">
-                      </v-img>
-                      <div class="sample-work-info ">
-                        <v-btn
-                          class="more-info text-white"
-                          v-bind="attrs"
-                          v-on="on"
-                          plain
-                          x-large
-                          light
-                          color="white"
-                          @click="setRepo(repo)"
-                        >
-                          {{ repo.name }}
-                        </v-btn>
-                      </div>
+          <v-dialog
+            v-model="dialog"
+            width="700px">
+            <template v-slot:activator="{ on, attrs }">
+              <v-row class="portfolio-content">
+                <div class="col-md-4 sample-work mt-4" v-for="repo in repos" :key="repo.id">
+                  <div class="w-auto sample-work-content ">
+                    <v-img alt="This is pic of video." :src="image" class="sample-work-img">
+                    </v-img>
+                    <div class="sample-work-info ">
+                      <v-btn
+                        class="more-info text-white"
+                        v-bind="attrs"
+                        v-on="on"
+                        plain
+                        x-large
+                        light
+                        color="white"
+                        @click="setRepo(repo)">
+                        {{ repo.name }}
+                      </v-btn>
                     </div>
                   </div>
-
-                </v-row>
-              </template>
-              <v-card>
-                <v-card-title>
-                  <span class="headline">{{repo.name}} </span>
-                </v-card-title>
-                <v-card-text v-if="repo">
-                  owner: {{repo.owner.login}}
-                  <br>
-                  owner url: {{repo.owner.url}}
-                  <br>
-                full name repository: {{repo.full_name}}
-                  <br>
-                  git url: {{repo.git_url}}
-                  <br>
-                  id: {{repo.id}}
-                  <br>
-                  size: {{repo.size}}
-                  <br>
-                  watchers: {{repo.watchers}}
-                </v-card-text>
-                <v-card-actions>
-                  <v-spacer></v-spacer>
-                  <v-btn
-                    color="green darken-1"
-                    text
-                    @click="dialog = false"
-                  >
-                    exit
-                  </v-btn>
-                </v-card-actions>
-              </v-card>
-            </v-dialog>
-
-
+                </div>
+              </v-row>
+            </template>
+            <Modal :repo="repo"/>
+          </v-dialog>
         </v-row>
         <v-row class="portfolio-footer" justify="center">
           <pagination :pageCount="pageCount"
@@ -85,17 +50,16 @@
   </v-app>
 </template>
 
-
 <script>
 import faker from 'faker/locale/en'
 import Pagination from "@/components/pagination";
 import Title from '@/components/title'
 import axios from "axios";
+import Modal from '@/components/modal'
 
 export default {
-
   name: "portfolio-id",
-  components: {Pagination, Title},
+  components: {Pagination, Title, Modal},
   data() {
     return {
       image: faker.image.image(),
@@ -104,7 +68,7 @@ export default {
       check: false,
       dialog: false,
       paramsId: 0,
-      repo:false
+      repo: false
     }
   },
   mounted() {
@@ -127,8 +91,8 @@ export default {
         console.log(err)
       })
     },
-   async setRepo(value){
-      this.repo=value
+    async setRepo(value) {
+      this.repo = value
     }
   }
 }
