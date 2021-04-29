@@ -73,13 +73,14 @@ export default {
   },
   mounted() {
     this.asyncData()
-    this.getRepo()
+    this.getRepos()
+    this.addRepoDescription()
   },
   methods: {
     async asyncData() {
       this.paramsId = parseInt(this.$route.params.id)
     },
-    async getRepo() {
+    async getRepos() {
       axios.get('https://api.github.com/users/mahsaaarajabpour/repos').then(res => {
         this.repos = res.data;
         console.log('repos', res.data)
@@ -87,12 +88,52 @@ export default {
           this.pageCount = Math.ceil(res.data.length / 6)
           this.check = true
         }
+        console.log('yeeeeees',this.repos.length)
+
       }).catch(err => {
         console.log(err)
       })
     },
     async setRepo(value) {
       this.repo = value
+    },
+    addRepoDescription(){
+
+    }
+  },
+  watch: {
+    repos(value){
+      console.log('5',value.length)
+      for (let i=0; i<this.repos.length;i++){
+        console.log('i',this.repos[i])
+        switch (this.repos[i].name){
+          case "simple-vue.js-website":
+            this.repos[i].myDescription='11111111111'
+            break
+
+          case "nuxt-project":
+            this.repos[i].myDescription='2222222'
+            break
+
+          case "nuxt-portfolio":
+            this.repos[i].myDescription='3333333'
+            break
+
+          case "animated-styles":
+            this.repos[i].myDescription='444444'
+            break;
+
+          case "attendance-system":
+            this.repos[i].myDescription='555'
+            break
+
+          case "my-react-website":
+            this.repos[i].myDescription='This project is exactly the same as the current project.\n' +
+              '      The only difference is using React.js instead of Vue.js\n' +
+              '      This project uses firebase for database and debouncing for search blogs that user created in add-blog page.'
+            break
+        }
+      }
     }
   }
 }

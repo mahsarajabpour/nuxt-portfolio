@@ -1,45 +1,97 @@
 <template>
-  <v-card>
-    <v-card-title>
-      <span class="headline">{{ repo.name }} </span>
-    </v-card-title>
-    <v-card-text v-if="repo" >
-      owner: {{ repo.owner.login }}
-      <br>
-      owner url: {{ repo.owner.url }}
-      <br>
-      full name repository: {{ repo.full_name }}
-      <br>
-      git url: {{ repo.git_url }}
-      <br>
-      id: {{ repo.id }}
-      <br>
-      size: {{ repo.size }}
-      <br>
-      watchers: {{ repo.watchers }}
+  <v-card class="my-modal">
+
+    <v-row justify="space-between p-4">
+      <v-card-title class="col-md-11 justify-content-center">
+        <span class="headline mb-2 text-center">{{ repo.name }} </span>
+      </v-card-title>
+      <v-card-actions class="col-md-1">
+        <v-spacer></v-spacer>
+        <v-btn
+          color="#2abe8b"
+          text
+          @click="()=>this.$emit('dialog',false)">
+          X
+        </v-btn>
+      </v-card-actions>
+    </v-row>
+
+    <v-card-text v-if="repo">
+
+      <span class="row justify-content-center">
+        <a :href="repo.owner.html_url" target="_blank" class="col-md-2">
+          <v-img :src="repo.owner.avatar_url" :href="repo.owner.html_url" alt="owner avatar" class="owner-avatar"></v-img>
+        </a>
+        <span class="col-md-4 owner-name">
+          <a :href="repo.owner.html_url" target="_blank">{{ repo.owner.login}}</a>
+        </span>
+      </span>
+
+      <span class="row justify-content-center">
+        <span class="col-md-9">
+          <p>{{repo.myDescription}}</p>
+        </span>
+      </span>
+
+      <span class="row justify-content-center">
+        <span class="col-md-9">
+          <p class="row font-weight-bold">Programming Languages:</p>
+          <p class="row">{{ repo.description}}</p>
+        </span>
+      </span>
+
+      <span class="row">
+        <span class="col-md-3">
+           <p class="font-weight-bold ">Full Name Repository: </p>
+        </span>
+        <span class="col-md-9">
+          <p>{{ repo.full_name}}</p>
+        </span>
+      </span>
+
+      <v-card-actions>
+        <v-btn :href="repo.clone_url" target="_blank">
+          Go to owner this repo!
+        </v-btn>
+      </v-card-actions>
+
+      <span class="row">
+        <span class="col-md-3">
+           <p class="font-weight-bold ">Size: </p>
+        </span>
+        <span class="col-md-9">
+          <p>{{ repo.size}}</p>
+        </span>
+      </span>
+
+      <span class="row">
+        <span class="col-md-3">
+           <p class="font-weight-bold ">Watchers: </p>
+        </span>
+        <span class="col-md-9">
+          <p>{{ repo.watchers}}</p>
+        </span>
+      </span>
+
     </v-card-text>
-    <v-card-actions>
-      <v-spacer></v-spacer>
-      <v-btn
-        color="green darken-1"
-        text
-        @click="()=>this.$emit('dialog',false)">
-        exit
-      </v-btn>
-    </v-card-actions>
+
   </v-card>
 </template>
 
 <script>
 export default {
   name: "index",
-  props:['repo'],
+  props: ['repo'],
 }
 </script>
 
 <style scoped>
-/*div[data-card='true'] {*/
-/*  background: url('/assets/image/portfolio/react-shop.png') no-repeat center center fixed !important;*/
-/*  background-size: cover;*/
-/*}*/
+.owner-avatar{
+  border-radius: 50%;
+  width: 70%;
+}
+.owner-name{
+  line-height: 5;
+}
+
 </style>
