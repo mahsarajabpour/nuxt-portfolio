@@ -1,61 +1,130 @@
 <template>
-  <div class="portfolio">
+  <v-app class="portfolio">
     <Title :titleName="'Portfolio'"/>
-    <div class="container">
-      <div class="col-md-12">
-        <ul class="row portfolio-header">
-          <li><a class="active" href="/">All</a></li>
-          <li><a :href="'/portfolio/'">app</a></li>
-          <li><a :href="'/portfolio/'">card</a></li>
-          <li><a :href="'/portfolio/'">web</a></li>
-        </ul>
-        <div class="row portfolio-content">
-          <div class="col-md-4 sample-work mt-4" v-for="n in 9" :key="n">
-            <div class="w-auto sample-work-content ">
-              <img :src="image"
-                   class="sample-work-img"
-                   alt="This is pic of video."/>
-              <div class="sample-work-info ">
-                <p>{{ date }}</p>
-                <p>{{ randomViews }} views</p>
-              </div>
+
+    <v-row justify="center">
+      <v-dialog
+        v-model="dialog"
+        width="600px"
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-container>
+            <div class="col-md-12 align-items-center">
+              <ul class="row portfolio-header justify-content-center">
+                <li><a class="active" href="/">All</a></li>
+                <li><a :href="'/portfolio/'">app</a></li>
+                <li><a :href="'/portfolio/'">card</a></li>
+                <li><a :href="'/portfolio/'">web</a></li>
+              </ul>
+              <v-row class="portfolio-content">
+                <div class="col-md-4 sample-work mt-4" v-for="repo in repos" :key="repo.id">
+                  <div class="w-auto sample-work-content ">
+                    <v-img alt="This is pic of video." :src="image" class="sample-work-img">
+                    </v-img>
+                    <div class="sample-work-info ">
+                      <p>{{ repo.name }}</p>
+                      <v-btn
+                        color="primary"
+                        dark
+                        v-bind="attrs"
+                        v-on="on"
+                      >
+                        Open Dialog
+                      </v-btn>
+                    </div>
+                  </div>
+                </div>
+              </v-row>
+              <v-row justify="center" class="portfolio-footer">
+                <pagination :pageCount="pageCount"
+                            :pageId="paramsId"
+                            :hrefLinkName="'portfolio'"
+                />
+              </v-row>
             </div>
-          </div>
-        </div>
-        <div class="row portfolio-footer justify-content-center">
-          <pagination :pageCount="3"
-                      :pageId="parseInt(this.$route.params.id)"
-                      :hrefLinkName="'portfolio'"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
+          </v-container>
+        </template>
+        <v-card>
+          <v-card-title>
+            <span class="headline">Use Google's location service?</span>
+          </v-card-title>
+          <v-card-text>
+            Lorem ipsum dolor sit amet, semper quis, sapien id natoque elit. Nostra urna at, magna at neque sed sed ante
+            impen. Feugiat metus sit nec in aliquet amet, porttitor pre
+            +
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn
+              color="green darken-1"
+              text
+              @click="dialog = false"
+            >
+              Disagree
+            </v-btn>
+            <v-btn
+              color="green darken-1"
+              text
+              @click="dialog = false"
+            >
+              Agree
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </v-row>
+  </v-app>
 </template>
+
 
 <script>
 import faker from 'faker/locale/en'
 import Pagination from "@/components/pagination";
 import Title from '@/components/title'
+import axios from "axios";
 
 export default {
+
   name: "portfolio-id",
   components: {Pagination, Title},
   data() {
     return {
       image: faker.image.image(),
-      date: faker.date.past().getDate() + ' ' +
-        faker.date.past().getMonth() + ' ' +
-        faker.date.past().getFullYear(),
-      randomViews: faker.random.number({'min': 10, 'max': 5000})
+      repos: [],
+      pageCount: 0,
+      check: false,
+      dialog: false,
+      paramsId: 0
     }
+  },
+  mounted() {
+    this.asyncData()
+    this.getRepo()
+  },
+  methods: {
+    async asyncData() {
+      this.paramsId = parseInt(this.$route.params.id)
+    },
+    getRepo() {
+      axios.get('https://api.github.com/users/mahsaaarajabpour/repos').then(res => {
+        this.repos = res.data;
+        console.log('repos', res.data)
+        if (!this.check && res.data.length > 0) {
+          this.pageCount = Math.ceil(res.data.length / 6)
+          this.check = true
+        }
+      }).catch(err => {
+        console.log(err)
+      })
+    },
   }
 }
 </script>
 
 <style scoped>
-.portfolio-header {
-  justify-content: center;
+
+.title {
+  margin: 0 0 88px 0;
 }
 
 .portfolio-header li a {
@@ -101,15 +170,14 @@ export default {
 
 .sample-work-info {
   width: 100%;
-  display: flex;
-  justify-content: space-between;
   align-items: center;
   text-align: center;
-
   transition: .5s ease;
   z-index: -1;
+  font-size: x-large;
+  font-weight: bold;
   position: absolute;
-  top: 89%;
+  top: 45%;
   padding: 0 10px;
 }
 
@@ -117,6 +185,7 @@ export default {
   margin: 0;
   color: #ffffff;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .sample-work:hover .sample-work-img {
