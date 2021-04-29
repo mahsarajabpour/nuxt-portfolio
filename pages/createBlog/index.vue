@@ -1,13 +1,6 @@
 <template>
   <div class="create-blog">
-    <div class="title">
-      <p>Create Blog</p>
-      <pre v-if="this.$route.query.paramsId">
-        <NuxtLink to="/">Home</NuxtLink>   /   <NuxtLink :to="'/blogs/' + this.$route.query.paramsId">Blogs</NuxtLink>
-      </pre>
-      <pre v-else><NuxtLink to="/">Home</NuxtLink>   /   Add Blog</pre>
-    </div>
-
+    <Title :titleName="'Create Blog'" :paramsId="this.$route.query.paramsId" :backLink="'blogs'"/>
     <div class="container center">
       <div class="col-md-8">
         <div class="row main-form  d-flex justify-content-center">

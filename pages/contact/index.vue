@@ -1,11 +1,6 @@
 <template>
   <div class="contact">
-    <div class="title">
-      <p>Contact</p>
-      <pre>
-                        <NuxtLink to="/">Home</NuxtLink>   /   Contact
-                    </pre>
-    </div>
+    <Title :titleName="'Contact'"/>
     <div class="container">
       <div class="col-md-12">
         <div class="map">
@@ -69,8 +64,11 @@
 </template>
 
 <script>
+import Title from '@/components/title'
+
 export default {
-  name: "Contact"
+  name: "Contact",
+  components: {Title}
 }
 </script>
 

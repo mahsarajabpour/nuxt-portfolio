@@ -1,9 +1,6 @@
 <template>
   <div class="portfolio">
-    <div class="title">
-      <p>portfolio</p>
-      <pre><NuxtLink to="/">Home</NuxtLink>   /   Portfolio</pre>
-    </div>
+    <Title :titleName="'Portfolio'"/>
     <div class="container">
       <div class="col-md-12">
         <ul class="row portfolio-header">
@@ -39,10 +36,11 @@
 <script>
 import faker from 'faker/locale/en'
 import Pagination from "@/components/pagination";
+import Title from '@/components/title'
 
 export default {
   name: "portfolio-id",
-  components: {Pagination},
+  components: {Pagination, Title},
   data() {
     return {
       image: faker.image.image(),

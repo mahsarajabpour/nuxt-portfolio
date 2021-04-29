@@ -1,12 +1,6 @@
 <template>
   <div class="blogs-view">
-    <div class="title">
-      <p>Blogs</p>
-      <pre>
-          <NuxtLink to="/">Home</NuxtLink>   /   Blogs
-      </pre>
-    </div>
-
+    <Title :titleName="'Blogs'"/>
     <div class="container">
       <div class="col-md-12">
         <SearchBar :blogs="blogs"/>
@@ -47,11 +41,12 @@
 import Pagination from '@/components/pagination'
 import ShowBlogs from '@/pages/blogs/showBlogs'
 import SearchBar from '@/pages/blogs/searchBar'
+import Title from '@/components/title'
 import axios from "axios";
 
 export default {
   name: "blogs-id",
-  components: {Pagination, ShowBlogs, SearchBar},
+  components: {Pagination, ShowBlogs, SearchBar,Title},
   data() {
     return {
       blogs: [],
