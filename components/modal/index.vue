@@ -3,7 +3,7 @@
     <v-card-title>
       <span class="headline">{{ repo.name }} </span>
     </v-card-title>
-    <v-card-text v-if="repo">
+    <v-card-text v-if="repo" >
       owner: {{ repo.owner.login }}
       <br>
       owner url: {{ repo.owner.url }}
@@ -23,7 +23,7 @@
       <v-btn
         color="green darken-1"
         text
-        @click="dialog = false">
+        @click="()=>this.$emit('dialog',false)">
         exit
       </v-btn>
     </v-card-actions>
@@ -33,10 +33,13 @@
 <script>
 export default {
   name: "index",
-  props:['repo']
+  props:['repo'],
 }
 </script>
 
 <style scoped>
-
+/*div[data-card='true'] {*/
+/*  background: url('/assets/image/portfolio/react-shop.png') no-repeat center center fixed !important;*/
+/*  background-size: cover;*/
+/*}*/
 </style>

@@ -36,7 +36,7 @@
                 </div>
               </v-row>
             </template>
-            <Modal :repo="repo"/>
+            <Modal :repo="repo" @dialog="dialog=$event"/>
           </v-dialog>
         </v-row>
         <v-row class="portfolio-footer" justify="center">
