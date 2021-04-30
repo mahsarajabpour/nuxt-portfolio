@@ -16,7 +16,7 @@
         <ul class="social-media">
           <li>
             <a target="_blank" href="https://github.com/mahsaaarajabpour/nuxt-portfolio">
-              <i class="fab fa-github"></i>
+              <v-icon small>fab fa-github</v-icon>
             </a>
           </li>
           <li>
@@ -27,17 +27,17 @@
           </li>
           <li>
             <a href="/">
-              <i class="fab fa-facebook-f"></i>
+              <v-icon small>fab fa-facebook-f</v-icon>
             </a>
           </li>
           <li>
             <a href="/">
-              <i class="fab fa-skype"></i>
+              <v-icon small>fab fa-skype</v-icon>
             </a>
           </li>
           <li>
             <a target="_blank" href="https://www.linkedin.com/in/mahsaa-rajabpour-79806099/">
-              <i class="fab fa-linkedin-in"></i>
+              <v-icon small>fab fa-linkedin-in</v-icon>
             </a>
           </li>
         </ul>
@@ -119,6 +119,10 @@ export default {
 </script>
 
 <style scoped>
+
+i.v-icon.v-icon {
+  color: white;
+}
 .main-footer {
   background-color: #4a5562;
   width: 100%;

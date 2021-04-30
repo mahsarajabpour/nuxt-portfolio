@@ -9,8 +9,9 @@
           <li><a :href="'/portfolio/'">card</a></li>
           <li><a :href="'/portfolio/'">web</a></li>
         </ul>
-        <v-row class="portfolio-content" justify="center">
+        <v-row class="portfolio-content " justify="center">
           <v-dialog
+            class="p-0"
             v-model="dialog"
             width="700px">
             <template v-slot:activator="{ on, attrs }">
@@ -88,8 +89,6 @@ export default {
           this.pageCount = Math.ceil(res.data.length / 6)
           this.check = true
         }
-        console.log('yeeeeees',this.repos.length)
-
       }).catch(err => {
         console.log(err)
       })
@@ -103,28 +102,31 @@ export default {
   },
   watch: {
     repos(value){
-      console.log('5',value.length)
       for (let i=0; i<this.repos.length;i++){
-        console.log('i',this.repos[i])
         switch (this.repos[i].name){
           case "simple-vue.js-website":
-            this.repos[i].myDescription='11111111111'
+            this.repos[i].myDescription='This project is a simple website based on vue.js and vuex.'
             break
 
           case "nuxt-project":
-            this.repos[i].myDescription='2222222'
+            this.repos[i].myDescription='This project is a simple website based on nuxt.js'
             break
 
           case "nuxt-portfolio":
-            this.repos[i].myDescription='3333333'
+            this.repos[i].myDescription='This is the current project. ' +
+              'I create this, to show all of my projects that is in github.' +
+              'This project uses firebase for database and debouncing for search blogs that user created in add-blog page.'
             break
 
           case "animated-styles":
-            this.repos[i].myDescription='444444'
+            this.repos[i].myDescription='This project is based on JavaScript and Html/CSS.' +
+              'I tried to create special and interesting styles.'
             break;
 
           case "attendance-system":
-            this.repos[i].myDescription='555'
+            this.repos[i].myDescription='This is an attendance system base on React.js.' +
+              'You can add your start-time / end-time of your work after logging in.' +
+              'This is disabled for the holiday.'
             break
 
           case "my-react-website":
