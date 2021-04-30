@@ -5,25 +5,26 @@
         <p>Sign In</p>
       </div>
       <div class="center">
-        <form class="col-10 login-body" onSubmit={signIn}>
+        <form class="col-10 login-body">
           <!--            {(emailVerify === false || emailVerify === false) &&-->
           <p class="alert-danger text-center text-danger"> incorrect data </p>
           <!--            }-->
 
           <div class="form-group input-group">
-            <input class="form-control" type="email"
+            <input class="form-control" type="email" v-model="user.email"
                    placeholder="email" required
             />
           </div>
 
           <div class="form-group input-group">
             <input class="form-control" type="password"
+                   v-model="user.password"
                    placeholder="password" required
             />
           </div>
 
           <div class="form-group m-3 center">
-            <button type="submit" class="my-btn col-lg-6 col-md-6 col-sm-6">Login
+            <button type="button" @click="login" class="my-btn col-lg-6 col-md-6 col-sm-6">Login
             </button>
           </div>
         </form>
@@ -38,8 +39,30 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
-  name: "login"
+  name:'index',
+  data(){
+    return{
+      user:{
+        email:null,
+        password:null
+      }
+    }
+  },
+  // fetch(context) is called by the server-side
+  // and before instantiating the component
+  fetch ({ store }) {
+    store.commit('user/login')
+  },
+  computed: mapState(['user/userInfo']),
+  methods: {
+
+    login(){
+      this.$store.commit('user/login',this.user)
+    }
+  }
 }
 </script>
 
