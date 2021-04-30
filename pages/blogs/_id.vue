@@ -93,7 +93,6 @@ export default {
       this.searchResults = results
       this.error = error
     },
-
   },
 }
 </script>

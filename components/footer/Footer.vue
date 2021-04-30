@@ -21,8 +21,8 @@
           </li>
           <li>
             <a target="_blank" href="https://gitconnected.com/mahsaaarajabpour">
-              <v-icon small color="green darken-2">mdi-gitconnected</v-icon>
-              <!--              <GitConnect class="git-connected"/>-->
+<!--              <v-icon small color="green darken-2">mdi-gitconnected</v-icon>-->
+<!--              <GitConnect class="git-connected"/>-->
             </a>
           </li>
           <li>

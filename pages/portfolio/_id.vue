@@ -4,10 +4,10 @@
     <v-container>
       <div class="col-md-12">
         <ul class="row portfolio-header justify-content-center">
-          <li><a class="active" href="/">All</a></li>
-          <li><a :href="'/portfolio/'">app</a></li>
-          <li><a :href="'/portfolio/'">card</a></li>
-          <li><a :href="'/portfolio/'">web</a></li>
+          <li><NuxtLink active-class="active" :to="'/portfolio/1'">All</NuxtLink></li>
+          <li><NuxtLink :to="'/portfolio/1'">app</NuxtLink></li>
+          <li><NuxtLink :to="'/portfolio/1'">card</NuxtLink></li>
+          <li><NuxtLink :to="'/portfolio/1'">web</NuxtLink></li>
         </ul>
         <v-row class="portfolio-content " justify="center">
           <v-dialog
@@ -145,6 +145,7 @@ export default {
 
 .title {
   margin: 0 0 88px 0;
+  font-size:1em !important;
 }
 
 .portfolio-header li a {
@@ -220,11 +221,8 @@ export default {
   z-index: 1;
 }
 
-
 /*/////////*/
 .portfolio-footer {
   padding: 15px;
-  /*display: flex;*/
-  /*justify-content: center;*/
 }
 </style>

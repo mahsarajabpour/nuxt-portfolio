@@ -21,6 +21,7 @@
     "jsdom": "^16.5.3",
     "nuxt": "^2.15.4",
     "nuxt-fontawesome": "^0.4.0",
+    "nuxt-svg-loader": "^1.2.0",
     "popper.js": "^1.16.1",
     "vue-slick": "^1.1.16",
     "vue-slick-carousel": "^1.0.6"
@@ -29,6 +30,7 @@
     "@fortawesome/fontawesome-free": "^5.15.3",
     "@nuxtjs/fontawesome": "^1.1.2",
     "@nuxtjs/vuetify": "^1.11.3",
+    "vue-svg-loader": "^0.16.0",
     "webpack": "^4.46.0"
   }
 }

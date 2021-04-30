@@ -10,6 +10,7 @@
         <v-btn
           color="#2abe8b"
           text
+          class="font-weight-bold"
           @click="()=>this.$emit('dialog',false)">
           X
         </v-btn>
@@ -245,7 +246,9 @@ export default {
 /*.l{*/
 /*  font-family: Luckiest_Guy;*/
 /*}*/
-
+.my-modal{
+  border-radius: 12px;
+}
 .modal-header{
   display: flex;
   justify-content: center;
