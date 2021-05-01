@@ -4,10 +4,18 @@
     <v-container>
       <div class="col-md-12">
         <ul class="row portfolio-header justify-content-center">
-          <li><NuxtLink active-class="active" :to="'/portfolio/1'">All</NuxtLink></li>
-          <li><NuxtLink :to="'/portfolio/1'">app</NuxtLink></li>
-          <li><NuxtLink :to="'/portfolio/1'">card</NuxtLink></li>
-          <li><NuxtLink :to="'/portfolio/1'">web</NuxtLink></li>
+          <li>
+            <NuxtLink active-class="active" :to="'/portfolio/1'">All</NuxtLink>
+          </li>
+          <li>
+            <NuxtLink :to="'/portfolio/1'">app</NuxtLink>
+          </li>
+          <li>
+            <NuxtLink :to="'/portfolio/1'">card</NuxtLink>
+          </li>
+          <li>
+            <NuxtLink :to="'/portfolio/1'">web</NuxtLink>
+          </li>
         </ul>
         <v-row class="portfolio-content " justify="center">
           <v-dialog
@@ -96,41 +104,41 @@ export default {
     async setRepo(value) {
       this.repo = value
     },
-    addRepoDescription(){
+    addRepoDescription() {
 
     }
   },
   watch: {
-    repos(value){
-      for (let i=0; i<this.repos.length;i++){
-        switch (this.repos[i].name){
+    repos(value) {
+      for (let i = 0; i < this.repos.length; i++) {
+        switch (this.repos[i].name) {
           case "simple-vue.js-website":
-            this.repos[i].myDescription='This project is a simple website based on vue.js and vuex.'
+            this.repos[i].myDescription = 'This project is a simple website based on vue.js and vuex.'
             break
 
           case "nuxt-project":
-            this.repos[i].myDescription='This project is a simple website based on nuxt.js'
+            this.repos[i].myDescription = 'This project is a simple website based on nuxt.js'
             break
 
           case "nuxt-portfolio":
-            this.repos[i].myDescription='This is the current project. ' +
+            this.repos[i].myDescription = 'This is the current project. ' +
               'I create this, to show all of my projects that is in github.' +
               'This project uses firebase for database and debouncing for search blogs that user created in add-blog page.'
             break
 
           case "animated-styles":
-            this.repos[i].myDescription='This project is based on JavaScript and Html/CSS.' +
+            this.repos[i].myDescription = 'This project is based on JavaScript and Html/CSS.' +
               'I tried to create special and interesting styles.'
             break;
 
           case "attendance-system":
-            this.repos[i].myDescription='This is an attendance system base on React.js.' +
+            this.repos[i].myDescription = 'This is an attendance system base on React.js.' +
               'You can add your start-time / end-time of your work after logging in.' +
               'This is disabled for the holiday.'
             break
 
           case "my-react-website":
-            this.repos[i].myDescription='This project is exactly the same as the current project.\n' +
+            this.repos[i].myDescription = 'This project is exactly the same as the current project.\n' +
               '      The only difference is using React.js instead of Vue.js\n' +
               '      This project uses firebase for database and debouncing for search blogs that user created in add-blog page.'
             break
@@ -145,7 +153,7 @@ export default {
 
 .title {
   margin: 0 0 88px 0;
-  font-size:1em !important;
+  font-size: 1em !important;
 }
 
 .portfolio-header li a {

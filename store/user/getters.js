@@ -1,8 +1,7 @@
 export default {
-  login: state => {
-    return state.userInfo
-  },
-  logOut: state=>{
+
+  userInfo: state => {
     return state.userInfo
   }
+
 }

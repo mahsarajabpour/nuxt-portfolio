@@ -46,7 +46,7 @@ import axios from "axios";
 
 export default {
   name: "blogs-id",
-  components: {Pagination, ShowBlogs, SearchBar,Title},
+  components: {Pagination, ShowBlogs, SearchBar, Title},
   data() {
     return {
       blogs: [],

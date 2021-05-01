@@ -40,21 +40,21 @@
         <NuxtLink class="" :to="'/sign-up'">Forgot password?</NuxtLink>
       </div>
     </div>
+
     <div v-else class="col-lg-6 col-md-6 col-sm-10 welcome-form">
       <div class="p-0 ">
-        <p class="text-center m-0">hi, {{ userInfo.name }} !</p>
+        <p class="text-center m-0">hi, {{ userInfo.firstName }} !</p>
       </div>
       <div>
-        <button class="my-btn" @click="exit" >log out</button>
+        <button class="my-btn" @click="exit">log out</button>
       </div>
     </div>
-
   </div>
 
 </template>
 
 <script>
-import {mapGetters,mapMutations} from 'vuex'
+import {mapGetters, mapMutations} from 'vuex'
 import axios from "axios";
 
 export default {
@@ -78,18 +78,19 @@ export default {
 
   computed: {
     ...mapGetters({
-      userInfo: 'user/login'
+      userInfo: 'user/userInfo'
     }),
   },
 
   methods: {
     ...mapMutations({
-      logOut: 'user/logOut' // map `this.add()` to `this.$store.commit('increment')`
+      logOut: 'user/logOut'
     }),
     login() {
       axios.get('https://my-shop-react-cdca2-default-rtdb.firebaseio.com/users.json')
         .then(res => {
           for (let key in res.data) {
+            res.data[key].id = key
             if (res.data[key].email === this.user.email) {
               this.emailVerify = true
               if (res.data[key].password === this.user.password) {
@@ -104,8 +105,8 @@ export default {
           if (this.emailVerify === null && this.passVerify === null) this.isSubmitted = false
         })
     },
-    exit(){
-      this.isSubmitted=false
+    exit() {
+      this.isSubmitted = false
       this.logOut()
     }
   }
