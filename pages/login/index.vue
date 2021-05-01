@@ -1,6 +1,6 @@
 <template>
   <div class="container login center">
-    <div class="col-lg-6 col-md-6 col-sm-10 p-0 main-form">
+    <div v-if="!isSubmitted" class="col-lg-6 col-md-6 col-sm-10 p-0 main-form">
       <div class="form-header ">
         <p>Sign In</p>
       </div>
@@ -40,12 +40,21 @@
         <NuxtLink class="" :to="'/sign-up'">Forgot password?</NuxtLink>
       </div>
     </div>
+    <div v-else class="col-lg-6 col-md-6 col-sm-10 welcome-form">
+      <div class="p-0 ">
+        <p class="text-center m-0">hi, {{ userInfo.name }} !</p>
+      </div>
+      <div>
+        <button class="my-btn" @click="exit" >log out</button>
+      </div>
+    </div>
+
   </div>
 
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import {mapGetters,mapMutations} from 'vuex'
 import axios from "axios";
 
 export default {
@@ -66,9 +75,17 @@ export default {
   fetch({store}) {
     store.commit('user/login')
   },
-  computed: mapState(['user/userInfo']),
-  methods: {
 
+  computed: {
+    ...mapGetters({
+      userInfo: 'user/login'
+    }),
+  },
+
+  methods: {
+    ...mapMutations({
+      logOut: 'user/logOut' // map `this.add()` to `this.$store.commit('increment')`
+    }),
     login() {
       axios.get('https://my-shop-react-cdca2-default-rtdb.firebaseio.com/users.json')
         .then(res => {
@@ -86,6 +103,10 @@ export default {
           }
           if (this.emailVerify === null && this.passVerify === null) this.isSubmitted = false
         })
+    },
+    exit(){
+      this.isSubmitted=false
+      this.logOut()
     }
   }
 }
