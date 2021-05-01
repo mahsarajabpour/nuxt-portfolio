@@ -5,10 +5,14 @@
         <p>Sign In</p>
       </div>
       <div class="center">
-        <form class="col-10 login-body">
-          <!--            {(emailVerify === false || emailVerify === false) &&-->
-          <p class="alert-danger text-center text-danger"> incorrect data </p>
-          <!--            }-->
+        <form class="col-10 login-body" @submit.prevent="login">
+          <p v-if="(!emailVerify || !passVerify ) && (isSubmitted!==null)"
+             class="alert-danger text-center text-danger">
+            <v-icon color="red" small class="alert-danger text-danger">
+              mdi-alert-circle-outline
+            </v-icon>
+            Invalid login or password.
+          </p>
 
           <div class="form-group input-group">
             <input class="form-control" type="email" v-model="user.email"
@@ -24,13 +28,15 @@
           </div>
 
           <div class="form-group m-3 center">
-            <button type="button" @click="login" class="my-btn col-lg-6 col-md-6 col-sm-6">Login
+            <button type="submit" class="my-btn col-lg-6 col-md-6 col-sm-6">Login
             </button>
           </div>
         </form>
       </div>
       <div class="form-footer d-flex flex-column align-items-center">
-        <p>Don't have an account?<NuxtLink :to="'/signUp'">Sign Up</NuxtLink></p>
+        <p>Don't have an account?
+          <NuxtLink :to="'/signUp'">Sign Up</NuxtLink>
+        </p>
         <NuxtLink class="" :to="'/sign-up'">Forgot password?</NuxtLink>
       </div>
     </div>
@@ -39,28 +45,47 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {mapState} from 'vuex'
+import axios from "axios";
 
 export default {
-  name:'index',
-  data(){
-    return{
-      user:{
-        email:null,
-        password:null
-      }
+  name: 'index',
+  data() {
+    return {
+      user: {
+        email: null,
+        password: null
+      },
+      emailVerify: null,
+      passVerify: null,
+      isSubmitted: null,
     }
   },
   // fetch(context) is called by the server-side
   // and before instantiating the component
-  fetch ({ store }) {
+  fetch({store}) {
     store.commit('user/login')
   },
   computed: mapState(['user/userInfo']),
   methods: {
 
-    login(){
-      this.$store.commit('user/login',this.user)
+    login() {
+      axios.get('https://my-shop-react-cdca2-default-rtdb.firebaseio.com/users.json')
+        .then(res => {
+          for (let key in res.data) {
+            if (res.data[key].email === this.user.email) {
+              this.emailVerify = true
+              if (res.data[key].password === this.user.password) {
+                this.passVerify = true
+                this.isSubmitted = true
+                this.$store.commit('user/login', res.data[key])
+              } else {
+                this.passVerify = false
+              }
+            }
+          }
+          if (this.emailVerify === null && this.passVerify === null) this.isSubmitted = false
+        })
     }
   }
 }
